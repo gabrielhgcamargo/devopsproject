@@ -59,10 +59,10 @@ public class AlunoController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<String> deletePokemon(@PathVariable("id") int cursoId) {
         alunoService.deleteAlunoById(cursoId);
-        return new ResponseEntity<>("Curso delete", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
 }

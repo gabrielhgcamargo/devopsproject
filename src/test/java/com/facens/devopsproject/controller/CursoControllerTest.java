@@ -106,7 +106,7 @@ public class CursoControllerTest {
     }
 
     @Test
-    public void CursoController_DeleteCurso_ReturnString() throws Exception {
+    public void CursoController_DeleteCurso() throws Exception {
         int cursoId = 1;
         doNothing().when(cursoService).deleteCursoById(1);
 
