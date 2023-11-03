@@ -22,7 +22,7 @@ public class CursoServiceImpl implements CursoService{
     private CursoRepository cursoRepository;
 
     @Autowired
-    public void PokemonServiceImpl(CursoRepository cursoRepository) {
+    public void CursoServiceImpl(CursoRepository cursoRepository) {
         this.cursoRepository = cursoRepository;
     }
 

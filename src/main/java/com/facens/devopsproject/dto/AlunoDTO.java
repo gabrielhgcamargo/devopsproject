@@ -1,5 +1,6 @@
 package com.facens.devopsproject.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CursoDTO {
+public class AlunoDTO {
     private Integer id;
     private String nome;
-    private Integer duracaoEmHoras;
+    private String cpf;
 }
