@@ -1,7 +1,9 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk
+
 WORKDIR /devopsproject
-COPY target/*.jar /devopsproject/devopsproject.jar
-EXPOSE 9090
-CMD java -XX:+UseContainerSupport -Xmx512m -Dserver.port=9090 -jar devopsproject.jar
+
+COPY target/devopsproject.jar /devopsproject/devopsproject.jar
+
+ENTRYPOINT ["java", "-jar", "devopsproject.jar"]
 
 
