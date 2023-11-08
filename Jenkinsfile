@@ -24,7 +24,10 @@ pipeline {
     }
     stage('Run tests against the container') {
       steps {
-        bat 'curl -L http://localhost:9090'
+        bat 'docker exec -it devopsproject curl -X GET http://localhost:9090/curso'
+        bat 'docker exec -it devopsproject curl -X POST http://localhost:9090/curso'
+        bat 'docker exec -it devopsproject curl -X GET http://localhost:9090/aluno'
+        bat 'docker exec -it devopsproject curl -X POST http://localhost:9090/aluno'
       }
     }
   }
