@@ -55,7 +55,7 @@ public class CursoController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deletePokemon(@PathVariable("id") int cursoId) {
+    public ResponseEntity<String> deleteCurso(@PathVariable("id") int cursoId) {
         cursoService.deleteCursoById(cursoId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

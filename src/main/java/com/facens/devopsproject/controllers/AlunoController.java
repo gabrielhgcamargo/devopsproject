@@ -34,7 +34,7 @@ public class AlunoController {
     }
 
     @GetMapping
-    public ResponseEntity<AlunoResponse> getCursos(
+    public ResponseEntity<AlunoResponse> getAlunos(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo,
             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize
     ) {
@@ -42,7 +42,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AlunoDTO> cursoDetail(@PathVariable int id) {
+    public ResponseEntity<AlunoDTO> alunoDetail(@PathVariable int id) {
         return ResponseEntity.ok(alunoService.getAlunoById(id));
 
     }
@@ -60,7 +60,7 @@ public class AlunoController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deletePokemon(@PathVariable("id") int cursoId) {
+    public ResponseEntity<String> deleteAluno(@PathVariable("id") int cursoId) {
         alunoService.deleteAlunoById(cursoId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
