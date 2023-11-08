@@ -12,7 +12,7 @@ services:
   api:
     image: gabrielhgcamargo/devopsproject
     environment:
-      DB_HOST: localhost
+      DB_HOST: database
     ports:
       - "9090:9090"
 volumes:
