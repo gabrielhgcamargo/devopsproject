@@ -25,11 +25,19 @@ pipeline {
         bat 'docker compose ps'
       }
     }
-    stage('Run tests against the container') {
-      steps {
-        bat 'curl http://localhost:9090'
+stage('Run tests against the container') {
+  steps {
+    script {
+      def apiUrl = sh(script: 'docker compose port api 9090', returnStatus: true).trim()
+      if (apiUrl) {
+        bat "curl $apiUrl"
+      } else {
+        error "O serviço 'api' não está disponível ou a porta 9090 não foi mapeada."
       }
     }
+  }
+}
+
   }
   
 }
