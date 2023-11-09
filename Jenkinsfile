@@ -22,17 +22,11 @@ pipeline {
         bat 'docker compose ps'
       }
     }
-stage('Run tests against the container') {
-  steps {
-    script {
-      def response = bat(script: 'curl -s http://localhost:9090/curso', returnStatus: true)
-      if (response == 0) {
-        def jsonResponse = bat(script: 'curl -s http://localhost:9090/curso', returnStdout: true)
-      } 
+    stage('Run tests against the container') {
+      steps {
+        bat 'curl -s http://localhost:9090/curso'
+      }
     }
-  }
-}
-
   }
   
 }
