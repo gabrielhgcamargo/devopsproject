@@ -25,9 +25,9 @@ pipeline {
 stage('Run tests against the container') {
   steps {
     script {
-      def response = bat(script: 'curl -s http://localhost:9090', returnStatus: true)
+      def response = bat(script: 'curl -s http://localhost:9090/curso', returnStatus: true)
       if (response == 0) {
-        def jsonResponse = bat(script: 'curl -s http://localhost:9090', returnStdout: true)
+        def jsonResponse = bat(script: 'curl -s http://localhost:9090/curso', returnStdout: true)
       } else {
         error "Failed to retrieve JSON from the server"
       }
