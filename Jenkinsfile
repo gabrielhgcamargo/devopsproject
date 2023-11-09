@@ -22,11 +22,19 @@ pipeline {
         bat 'docker compose ps'
       }
     }
-    stage('Run tests against the container') {
-      steps {
-        bat 'curl http://localhost:9090/curso'
+stage('Run tests against the container') {
+  steps {
+    script {
+      def response = bat(script: 'curl -s http://localhost:9090', returnStatus: true)
+      if (response == 0) {
+        def jsonResponse = bat(script: 'curl -s http://localhost:9090', returnStdout: true)
+      } else {
+        error "Failed to retrieve JSON from the server"
       }
     }
+  }
+}
+
   }
   
 }
