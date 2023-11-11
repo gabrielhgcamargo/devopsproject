@@ -10,6 +10,6 @@ import io.swagger.v3.oas.annotations.info.Info;
         summary = "This API will create, read, update and delete."
     )
 )
+@Generated
 public class SwaggerConfig {
-    
 }

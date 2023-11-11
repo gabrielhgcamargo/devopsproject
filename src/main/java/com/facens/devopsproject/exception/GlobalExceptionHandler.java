@@ -5,14 +5,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-
+import com.facens.devopsproject.config.Generated;
 import java.util.Date;
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @Generated
     @ExceptionHandler(CursoNotFoundException.class)
-    public ResponseEntity<ErrorObject> handlePokemonNotFoundException(CursoNotFoundException ex, WebRequest request) {
+    public ResponseEntity<ErrorObject> handleCursoNotFoundException(CursoNotFoundException ex, WebRequest request) {
 
         ErrorObject errorObject = new ErrorObject();
 
@@ -23,6 +25,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<ErrorObject>(errorObject, HttpStatus.NOT_FOUND);
     }
 
+    @Generated
     @ExceptionHandler(AlunoNotFoundException.class)
     public ResponseEntity<ErrorObject> handleAlunoNotFoundException(AlunoNotFoundException ex, WebRequest request) {
 
