@@ -27,6 +27,11 @@ pipeline {
         bat 'curl -s http://localhost:9090'
       }
     }
+    stage('Send Slack Message') {
+      steps {
+        slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#devopsproject', color: 'good', message: 'Image pushed to Dockerhub!', tokenCredentialId: 'slack-demo'
+      }
+    }
   }
   
 }
