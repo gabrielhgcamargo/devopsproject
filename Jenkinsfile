@@ -24,7 +24,9 @@ pipeline {
     }
     stage('Run tests against the container') {
       steps {
-        bat 'curl -s http://localhost:9090'
+         script {
+           sh 'mvn clean test' 
+         }
       }
     }
     stage('Send Slack Message') {
