@@ -51,6 +51,7 @@ public class AlunoController {
         return new ResponseEntity<>(alunoService.getAllAlunos(pageNo, pageSize), HttpStatus.OK);
     }
 
+    // Desenvolvida por: Gabriel Henrique
     @GetMapping("/{id}")
     @Operation(
         tags = "aluno",
@@ -66,6 +67,7 @@ public class AlunoController {
 
     }
 
+    // Desenvolvida por: Gabriel Bueno
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(
@@ -79,6 +81,7 @@ public class AlunoController {
         return new ResponseEntity<>(alunoService.createAluno(alunoDTO), HttpStatus.CREATED);
     }
 
+    // Desenvolvida por: Vitor
     @PutMapping("{id}")
     @Operation(
         tags = "aluno",
@@ -93,6 +96,7 @@ public class AlunoController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    // Desenvolvida por: Luis    
     @DeleteMapping("{id}")
     @Operation(
         tags = "aluno",

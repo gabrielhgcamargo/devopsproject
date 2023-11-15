@@ -49,6 +49,7 @@ public class CursoController {
         return new ResponseEntity<>(cursoService.getAllCursos(pageNo, pageSize), HttpStatus.OK);
     }
 
+    // Desenvolvida por: Gabriel Henrique
     @GetMapping("/{id}")
     @Operation(
         tags = "curso",
@@ -64,6 +65,7 @@ public class CursoController {
 
     }
 
+    // Desenvolvida por: Vitor
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(
@@ -77,6 +79,7 @@ public class CursoController {
         return new ResponseEntity<>(cursoService.createCurso(cursoDTO), HttpStatus.CREATED);
     }
 
+    // Desenvolvida por: Luis    
     @PutMapping("{id}")
     @Operation(
         tags = "curso",
