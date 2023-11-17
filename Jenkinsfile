@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Start container') {
       steps {
-        bat 'docker compose up -e SPRING_PROFILES_ACTIVE=homol -d --no-color --wait'
+        bat 'docker compose up -SPRING_PROFILES_ACTIVE=homol -d --no-color --wait'
         bat 'docker compose ps'
       }
     }
