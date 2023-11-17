@@ -13,6 +13,7 @@ services:
     image: gabrielhgcamargo/devopsproject
     environment:
       DB_HOST: database
+        - "SPRING_PROFILES_ACTIVE=homol"
     ports:
       - "9090:9090"
 volumes:
