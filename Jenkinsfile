@@ -24,7 +24,7 @@ pipeline {
     }
     stage('Run tests against the container') {
       steps {
-        bat 'curl -s http://localhost:9090/aluno'
+        bat 'curl -L http://localhost:9090/aluno'
       }
     }
     stage('Send Slack Message') {
