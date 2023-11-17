@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Send Slack Message') {
       steps {
-        slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#devopsproject', color: 'good', message: 'The Docker image is functioning as intended, all tests have passed successfully.', tokenCredentialId: 'slack-demo'
+        slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#devopsproject', color: 'good', message: 'The Docker image is functioning as intended, all tests have passed successfully!', tokenCredentialId: 'slack-demo'
       }
     }
   }
