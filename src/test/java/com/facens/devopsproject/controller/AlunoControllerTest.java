@@ -57,12 +57,16 @@ public class AlunoControllerTest {
 
     @Test
     public void AlunoController_CreateAluno_ReturnCreated() throws Exception {
+        
+        // Mockando o comportamento do AlunoService para simular a criação de um estudante
         given(alunoService.createAluno(ArgumentMatchers.any())).willAnswer((invocation -> invocation.getArgument(0)));
 
+        // Realizando uma solicitação HTTP simulada para criar um estudante
         ResultActions response = mockMvc.perform(post("/aluno")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(alunoDTO)));
-
+                
+        // Verificando se a resposta HTTP está conforme o esperado
         response.andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.nome", CoreMatchers.is(alunoDTO.getNome())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cpf", CoreMatchers.is(alunoDTO.getCpf())));
@@ -70,14 +74,18 @@ public class AlunoControllerTest {
 
     @Test
     public void AlunoController_GetAllAluno_ReturnResponseDto() throws Exception {
+        
+        // Criando um mock AlunoResponse para o método getAllAlunos
         AlunoResponse responseDto = AlunoResponse.builder().pageSize(10).last(true).pageNo(1).content(Arrays.asList(alunoDTO)).build();
         when(alunoService.getAllAlunos(1,10)).thenReturn(responseDto);
 
+         // Realizando uma solicitação HTTP simulada para obter todos os estudantes
         ResultActions response = mockMvc.perform(get("/aluno")
                 .contentType(MediaType.APPLICATION_JSON)
                 .param("pageNo","1")
                 .param("pageSize", "10"));
 
+        // Verificando se a resposta HTTP contém o conteúdo esperado
         response.andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content.size()", CoreMatchers.is(responseDto.getContent().size())));
     }
@@ -85,12 +93,16 @@ public class AlunoControllerTest {
     @Test
     public void AlunoController_AlunoDetail_ReturnAlunoDto() throws Exception {
         int alunoId = 1;
-        when(alunoService.getAlunoById(alunoId)).thenReturn(alunoDTO);
 
+        // Mockando o comportamento do AlunoService para simular a obtenção de um estudante específico
+        when(alunoService.getAlunoById(alunoId)).thenReturn(alunoDTO);
+        
+        // Realizando uma solicitação HTTP simulada para obter detalhes de um estudante específico
         ResultActions response = mockMvc.perform(get("/aluno/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(alunoDTO)));
 
+        // Verificando se a resposta HTTP contém os detalhes esperados
         response.andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.nome", CoreMatchers.is(alunoDTO.getNome())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cpf", CoreMatchers.is(alunoDTO.getCpf())));
@@ -99,12 +111,16 @@ public class AlunoControllerTest {
     @Test
     public void AlunoController_UpdateAluno_ReturnAlunoDto() throws Exception {
         int alunoId = 1;
+
+        // Mockando o comportamento do AlunoService para simular a atualização de um estudante
         when(alunoService.updateAlunoById(alunoDTO, alunoId)).thenReturn(alunoDTO);
 
+        // Realizando uma solicitação HTTP simulada para atualizar um estudante
         ResultActions response = mockMvc.perform(put("/aluno/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(alunoDTO)));
 
+        // Verificando se a resposta HTTP contém os detalhes atualizados
         response.andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.nome", CoreMatchers.is(alunoDTO.getNome())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cpf", CoreMatchers.is(alunoDTO.getCpf())));
@@ -113,11 +129,15 @@ public class AlunoControllerTest {
     @Test
     public void AlunoController_DeleteAluno() throws Exception {
         int alunoId = 1;
+
+        // Mockando o comportamento do AlunoService para simular a exclusão de um estudante
         doNothing().when(alunoService).deleteAlunoById(alunoId);
 
+        // Realizando uma solicitação HTTP simulada para excluir um estudante
         ResultActions response = mockMvc.perform(delete("/aluno/1")
                 .contentType(MediaType.APPLICATION_JSON));
 
+        // Verificando se a resposta HTTP indica uma exclusão bem-sucedida
         response.andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
